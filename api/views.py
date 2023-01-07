@@ -124,6 +124,7 @@ def waitlist_create(request):
         }, status=status.HTTP_201_CREATED)
 
     else:
+        
         return Response({
             "success": False
         }, status=status.HTTP_400_BAD_REQUEST)  
