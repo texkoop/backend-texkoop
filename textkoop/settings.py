@@ -107,12 +107,12 @@ if os.environ['ENVIRONMENT'] == "DEVELOPMENT":
 else:
     DATABASES = {
     'default': {
-        'ENGINE': os.environ['ENGINE'],
-        'HOST': os.environ['HOST'],
-        'NAME': os.environ['NAME'],
-        'USER': os.environ['USER'],
-        'PASSWORD': os.environ['PASSWORD'],
-        'PORT': os.environ['PORT'],
+        'ENGINE': "django.db.backends.postgresql_psycopg2",
+        'HOST': os.environ['PGHOST'],
+        'NAME': os.environ['PGDATABASE'],
+        'USER': os.environ['PGUSER'],
+        'PASSWORD': os.environ['PGPASSWORD'],
+        'PORT': os.environ['PGPORT'],
 
     }
 }
