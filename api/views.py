@@ -1,4 +1,5 @@
 
+from django.shortcuts import redirect
 from rest_framework.decorators import api_view
 from .serializers import *
 from rest_framework.response import Response
@@ -7,6 +8,10 @@ from rest_framework import status
 # Create your views here.
 
 
+
+def homepage(request):
+    return redirect('/admin')
+    
 
 # @api_view(['POST'])
 # def contact_us_create(request):
