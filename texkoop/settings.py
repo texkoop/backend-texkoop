@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'corsheaders',
     'rest_framework',
+    'cloudinary_storage',
+    'cloudinary',
 
 ]
 SITE_ID =1
@@ -158,6 +160,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+#cloudinary config
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : os.environ['CLOUD_NAME'],
+    'API_KEY' : os.environ['CLOUD_API_KEY'],
+    'API_SECRET' : os.environ['CLOUD_API_SECRET']
+}
+
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 STATIC_URL = 'static/'
@@ -169,7 +179,8 @@ STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-
+if os.environ['ENVIRONMENT'] == "DEVELOPMENT":
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CORS_ORIGIN_WHITELIST = [
     f"{os.environ['FRONTEND_URL']}"
     
